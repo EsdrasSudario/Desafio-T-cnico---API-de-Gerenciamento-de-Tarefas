@@ -1,7 +1,7 @@
 # Plano de Testes - API de Gerenciamento de Tarefas
 
-**Candidato:** [Seu Nome]  
-**Data:** [Data de elaboração]
+**Candidato:** Esdras Sudário  
+**Data:** 13/10/2025
 
 ---
 
@@ -9,27 +9,36 @@
 
 ### 1.1 Tipos de Teste
 Descreva quais tipos de teste você aplicaria neste projeto:
-- [ ] Testes Unitários
-- [ ] Testes de Integração
-- [ ] Testes de Segurança
-- [ ] Testes de Performance
-- [ ] Outros: _____________
+- [ X ] Testes Unitários
+- [ X ] Testes de Integração
+- [ X ] Testes de Segurança
+- [ X ] Testes de Performance
+- [ X ] Outros: Manuais / Exploratórios
 
 ### 1.2 Ferramentas Utilizadas
 Liste as ferramentas que você usaria:
-- Automação de Testes: _______________
-- Testes Manuais/Exploratórios: _______________
-- Gestão de Testes: _______________
-- CI/CD: _______________
+- Automação de Testes: Spring Boot Test(JUnit e Mockito)
+- Testes Manuais/Exploratórios: Interface de usuário, do SWAGGER, no navegador.
+- Gestão de Testes: Git
+- CI/CD: GitHub Actions
 
 ### 1.3 Priorização
+No início, verifico se o sistema tem o módulo de documentação SWAGGER, caso tenha ok, se não tem que ter.
 Como você priorizaria os testes? Justifique.
 
 ---
 
 ## 2. Cenários de Teste
 
-### 2.1 Autenticação
+### 2.1 Documentação da API
+
+**Cenários de Teste:**
+- [ X ] Verificar se a página do SWAGGER é mostrada no navegador
+- [ X ] Verificar se o nome e a descrição do sistema é mostrado
+
+---
+
+### 2.2 Autenticação
 
 #### POST /api/auth/register
 
@@ -47,7 +56,7 @@ Como você priorizaria os testes? Justifique.
 **Cenários de Erro:**
 - [ ] ?
 
-### 2.2 Gerenciamento de Tarefas
+### 2.3 Gerenciamento de Tarefas
 
 #### POST /api/tasks
 
@@ -94,7 +103,7 @@ Como você priorizaria os testes? Justifique.
 **Cenários de Erro:**
 - [ ] ?
 
-### 2.3 Segurança JWT
+### 2.4 Segurança JWT
 
 **Cenários de Teste:**
 - [ ] Verifique acessos dos endpoints com/sem token válido
@@ -107,6 +116,22 @@ Como você priorizaria os testes? Justifique.
 ## 3. Bugs Identificados
 
 ### Bug #1
+**Título:** Erro de segurança  
+**Severidade:** Alta  
+**Localização:** Classe : SecurityConfig
+**Descrição:** O Security não está para o uso de token.
+**Passos para Reproduzir:**
+1. Execultar o sistema. 
+2. Na tela do consele aparece uma senha gerada pelo Security.
+
+**Resultado Esperado:**
+	No consele não mais aparecer a senha gerada.  
+**Resultado Atual:**
+Using generated security password: bddb4522-aa46-450b-97fe-debd5f729598  
+**Sugestão de Correção:**
+Configurar o Security e tudo que depende dessa configuração.
+
+### Bug #2
 **Título:** [Descreva o bug]  
 **Severidade:** [Crítica/Alta/Média/Baixa]  
 **Localização:** [Classe/Método]  
@@ -120,7 +145,7 @@ Como você priorizaria os testes? Justifique.
 **Resultado Atual:**  
 **Sugestão de Correção:**
 
-### Bug #2
+### Bug #3
 [Repita o formato acima para cada bug encontrado]
 
 ---
