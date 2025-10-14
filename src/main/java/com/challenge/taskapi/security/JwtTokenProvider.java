@@ -1,4 +1,4 @@
-package com.challenge.taskapi.security;
+/*package com.challenge.taskapi.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
@@ -27,15 +27,15 @@ public class JwtTokenProvider {
         Date expiryDate = new Date(now.getTime() + jwtExpiration);
 
         return Jwts.builder()
-                .subject(username)
-                .issuedAt(now)
-                .expiration(expiryDate)
+                .setSubject(username)
+                .setIssuedAt(now)
+                .setExpiration(expiryDate)
                 .signWith(getSigningKey())
                 .compact();
     }
 
     public String getUsernameFromToken(String token) {
-        Claims claims = Jwts.parser()
+        Claims claims = ((Object) Jwts.parser())
                 .verifyWith(getSigningKey())
                 .build()
                 .parseSignedClaims(token)
@@ -59,3 +59,4 @@ public class JwtTokenProvider {
     }
 }
 
+*/
