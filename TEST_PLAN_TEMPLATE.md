@@ -116,6 +116,22 @@ Como você priorizaria os testes? Justifique.
 ## 3. Bugs Identificados
 
 ### Bug #1
+**Título:** Erro de segurança  
+**Severidade:** Alta  
+**Localização:** Classe : SecurityConfig
+**Descrição:** O Security não está para o uso de token.
+**Passos para Reproduzir:**
+1. Execultar o sistema. 
+2. Na tela do consele aparece uma senha gerada pelo Security.
+
+**Resultado Esperado:**
+	No consele não mais aparecer a senha gerada.  
+**Resultado Atual:**
+Using generated security password: bddb4522-aa46-450b-97fe-debd5f729598  
+**Sugestão de Correção:**
+Configurar o Security e tudo que depende dessa configuração.
+
+### Bug #2
 **Título:** [Descreva o bug]  
 **Severidade:** [Crítica/Alta/Média/Baixa]  
 **Localização:** [Classe/Método]  
@@ -129,7 +145,7 @@ Como você priorizaria os testes? Justifique.
 **Resultado Atual:**  
 **Sugestão de Correção:**
 
-### Bug #2
+### Bug #3
 [Repita o formato acima para cada bug encontrado]
 
 ---
