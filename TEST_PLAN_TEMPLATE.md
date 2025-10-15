@@ -1,7 +1,7 @@
 # Plano de Testes - API de Gerenciamento de Tarefas
 
 **Candidato:** Esdras Sudário  
-**Data:** 13/10/2025
+**Data:** 14/10/2025
 
 ---
 
@@ -23,8 +23,9 @@ Liste as ferramentas que você usaria:
 - CI/CD: GitHub Actions
 
 ### 1.3 Priorização
-No início, verifico se o sistema tem o módulo de documentação SWAGGER, caso tenha ok, se não tem que ter.
-Como você priorizaria os testes? Justifique.
+- No início, verifico se o sistema tem o módulo de documentação SWAGGER, caso não tenha, implementar.
+- Então, faço testes manuais / exploratórios em cada endpoint, ocorrendo erros faz-se a verificação dos códigos.
+- Em seguida, verefico se existe testes de automação( unitários / integração ), não tendo, implementar.
 
 ---
 
@@ -43,10 +44,12 @@ Como você priorizaria os testes? Justifique.
 #### POST /api/auth/register
 
 **Cenários de Sucesso:**
-- [ ] Registrar usuário com dados válidos
+- [ X ] Registrar usuário com dados válidos
 
 **Cenários de Erro:**
-- [ ] ?
+- [ X ] Registrar com algum dado inválido.
+- [ X ] Registrar com nome já usado.
+- [ X ] Registrar com e-mail já usado.
 
 #### POST /api/auth/login
 
@@ -125,28 +128,49 @@ Como você priorizaria os testes? Justifique.
 2. Na tela do consele aparece uma senha gerada pelo Security.
 
 **Resultado Esperado:**
-	No consele não mais aparecer a senha gerada.  
+	No consele não mais aparecer a senha gerada o sistema configurado para token.  
 **Resultado Atual:**
 Using generated security password: bddb4522-aa46-450b-97fe-debd5f729598  
 **Sugestão de Correção:**
 Configurar o Security e tudo que depende dessa configuração.
 
 ### Bug #2
-**Título:** [Descreva o bug]  
-**Severidade:** [Crítica/Alta/Média/Baixa]  
-**Localização:** [Classe/Método]  
-**Descrição:** [Descreva o problema]  
+**Título:** Implementação do Segurity incompleta  
+**Severidade:** Alta  
+**Localização:** Várias classes  
+**Descrição:** Implementar o Security  
 **Passos para Reproduzir:**
-1. 
-2. 
-3. 
+1. Iniciar a IDE
+2. Inspecionar os arquivos para uso do Security
 
-**Resultado Esperado:**  
-**Resultado Atual:**  
-**Sugestão de Correção:**
+**Resultado Esperado:** O Segurity proteger o acesso dos end-points  
+**Resultado Atual:** Os end-points estão restritos a uma ou mais permissão(ões)  
+**Sugestão de Correção:** Corrigir / incrementar código
 
 ### Bug #3
-[Repita o formato acima para cada bug encontrado]
+**Título:** Spring Boot com versão errada  
+**Severidade:** Baixa  
+**Localização:** pom.xml  
+**Descrição:** A versão estava 3.1.12  
+**Passos para Reproduzir:**
+1. Iniciar a IDE
+2. Inspecionar o arquivo pom.xml
+
+**Resultado Esperado:** A IDE reconhecer a versão correta  
+**Resultado Atual:** A versão está atualizada  
+**Sugestão de Correção:** Alterar a versão
+
+### Bug #4
+**Título:** Registro de usuário sem funcionar  
+**Severidade:** Alta  
+**Localização:** Vários arquivos  
+**Descrição:** Ao tentar fazer registro de usuário o sistema não faz o registro  
+**Passos para Reproduzir:**
+1. No SWAGGER usar o end-point para registro de usuário
+
+**Resultado Esperado:** O registro do usuário
+**Resultado Atual:** Erro ao registrar  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
 
 ---
 
