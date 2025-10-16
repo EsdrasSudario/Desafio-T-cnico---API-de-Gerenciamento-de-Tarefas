@@ -1,7 +1,7 @@
 # Plano de Testes - API de Gerenciamento de Tarefas
 
 **Candidato:** Esdras Sudário  
-**Data:** 14/10/2025
+**Data:** 15/10/2025
 
 ---
 
@@ -12,7 +12,7 @@ Descreva quais tipos de teste você aplicaria neste projeto:
 - [ X ] Testes Unitários
 - [ X ] Testes de Integração
 - [ X ] Testes de Segurança
-- [ X ] Testes de Performance
+- [   ] Testes de Performance
 - [ X ] Outros: Manuais / Exploratórios
 
 ### 1.2 Ferramentas Utilizadas
@@ -26,6 +26,7 @@ Liste as ferramentas que você usaria:
 - No início, verifico se o sistema tem o módulo de documentação SWAGGER, caso não tenha, implementar.
 - Então, faço testes manuais / exploratórios em cada endpoint, ocorrendo erros faz-se a verificação dos códigos.
 - Em seguida, verefico se existe testes de automação( unitários / integração ), não tendo, implementar.
+- Então, concluo com testes de segurança. 
 
 ---
 
@@ -35,7 +36,7 @@ Liste as ferramentas que você usaria:
 
 **Cenários de Teste:**
 - [ X ] Verificar se a página do SWAGGER é mostrada no navegador
-- [ X ] Verificar se o nome e a descrição do sistema é mostrado
+- [ X ] Verificar se o nome e a descrição do sistema é mostrado na página do SWAGGER
 
 ---
 
@@ -44,12 +45,11 @@ Liste as ferramentas que você usaria:
 #### POST /api/auth/register
 
 **Cenários de Sucesso:**
-- [ X ] Registrar usuário com dados válidos
+- [ X ] Registrar usuário com dados válidos, status 200.
 
 **Cenários de Erro:**
-- [ X ] Registrar com algum dado inválido.
-- [ X ] Registrar com nome já usado.
-- [ X ] Registrar com e-mail já usado.
+- [ X ] Registrar com nome já usado, status 400.
+- [ X ] Registrar com e-mail já usado, status 400.
 
 #### POST /api/auth/login
 
@@ -168,8 +168,20 @@ Configurar o Security e tudo que depende dessa configuração.
 **Passos para Reproduzir:**
 1. No SWAGGER usar o end-point para registro de usuário
 
-**Resultado Esperado:** O registro do usuário
+**Resultado Esperado:** O registro do usuário  
 **Resultado Atual:** Erro ao registrar  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
+
+### Bug #5
+**Título:** Status do registro errado  
+**Severidade:** Alta
+**Localização:** AuthController  
+**Descrição:** Ao tentar registrar usuário o sistema com nome já existente  
+**Passos para Reproduzir:**
+1. No end-point para registro de usuário tentar enviar um nome que já tem registro
+
+**Resultado Esperado:** Status 400  
+**Resultado Atual:** Status 200  
 **Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
 
 ---
