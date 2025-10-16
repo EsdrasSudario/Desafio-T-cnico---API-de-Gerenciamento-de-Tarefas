@@ -1,4 +1,4 @@
-package com.challenge.taskapi.testAuthService;
+package com.challenge.taskapi;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -49,8 +49,8 @@ public class AuthServiceTest {
 		Mockito.when(encoder.encode( "password"))
 		   .thenReturn(Mockito.anyString());
 		Set<String> rolesSet = new HashSet<>();
-		rolesSet.add(null);
-		SignupRequest request = new SignupRequest("username","email@mail",rolesSet,"password");//role null
+		rolesSet.add("adm");
+		SignupRequest request = new SignupRequest("username","email@mail",rolesSet,"password");//role ERole.ROLE_ADMIN
 
 		//ACT
 		ResponseEntity<?> responseEntity = authService.register(request);
@@ -65,25 +65,25 @@ public class AuthServiceTest {
 		// ARRANGE
 		User user = new User();
 		user.setId(1L);
-		user.setUsername("name");
+		user.setUsername("username");
 		user.setEmail("mail@mail");
 		user.setPassword("123456");
 		Set<Role> roles = new HashSet<>();
 		user.setRoles(roles);
 		user.setTasks(null);
 		userRepository.save(user);
-		Mockito.when(userRepository.existsByUsername(Mockito.anyString()))
+		Mockito.when(userRepository.existsByUsername("username"))
 			   .thenReturn(true);
 		Mockito.when(encoder.encode( "password"))
 		   .thenReturn(Mockito.anyString());
 		Set<String> rolesSet = new HashSet<>();
 		rolesSet.add(null);
-		SignupRequest request = new SignupRequest("username","email@mail",rolesSet,"password");//role null
+		SignupRequest request = new SignupRequest("username","email@mail",rolesSet,"123456");//role null
 
 		//ACT
 		ResponseEntity<?> responseEntity = authService.register(request);
 		
 		//ASSERT
-		assertEquals(400, responseEntity.getStatusCode());		
+		assertEquals(400, responseEntity.getStatusCode().value());		
 	}
 }

@@ -121,8 +121,8 @@ Liste as ferramentas que você usaria:
 ### Bug #1
 **Título:** Erro de segurança  
 **Severidade:** Alta  
-**Localização:** Classe : SecurityConfig
-**Descrição:** O Security não está para o uso de token.
+**Localização:** Classe : SecurityConfig  
+**Descrição:** O Security não está para o uso de token.  
 **Passos para Reproduzir:**
 1. Execultar o sistema. 
 2. Na tela do consele aparece uma senha gerada pelo Security.
@@ -174,7 +174,7 @@ Configurar o Security e tudo que depende dessa configuração.
 
 ### Bug #5
 **Título:** Status do registro errado  
-**Severidade:** Alta
+**Severidade:** Alta  
 **Localização:** AuthController  
 **Descrição:** Ao tentar registrar usuário o sistema com nome já existente  
 **Passos para Reproduzir:**
