@@ -1,7 +1,7 @@
 # Plano de Testes - API de Gerenciamento de Tarefas
 
 **Candidato:** Esdras Sudário  
-**Data:** 15/10/2025
+**Data:** 16/10/2025
 
 ---
 
@@ -54,10 +54,10 @@ Liste as ferramentas que você usaria:
 #### POST /api/auth/login
 
 **Cenários de Sucesso:**
-- [ ] Login com credenciais válidas
+- [ ] Login com sucesso
 
 **Cenários de Erro:**
-- [ ] ?
+- [ ] Login sem sucesso
 
 ### 2.3 Gerenciamento de Tarefas
 
@@ -175,13 +175,25 @@ Configurar o Security e tudo que depende dessa configuração.
 ### Bug #5
 **Título:** Status do registro errado  
 **Severidade:** Alta  
-**Localização:** AuthController  
+**Localização:** AuthController register  
 **Descrição:** Ao tentar registrar usuário o sistema com nome já existente  
 **Passos para Reproduzir:**
 1. No end-point para registro de usuário tentar enviar um nome que já tem registro
 
 **Resultado Esperado:** Status 400  
 **Resultado Atual:** Status 200  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
+
+### Bug #6
+**Título:** Login não funciona  
+**Severidade:** Alta  
+**Localização:** AuthController login  
+**Descrição:** Ao tentar logar, sistema mostra erro  
+**Passos para Reproduzir:**
+1. No end-point para login, informar nome e senha de usuário já cadastrado  
+
+**Resultado Esperado:** Status 200  
+**Resultado Atual:** Status 500  
 **Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
 
 ---

@@ -1,7 +1,6 @@
 package com.challenge.taskapi.controller;
 
 import com.challenge.taskapi.dto.LoginRequest;
-import com.challenge.taskapi.dto.LoginResponse;
 import com.challenge.taskapi.dto.SignupRequest;
 import com.challenge.taskapi.service.AuthService;
 
@@ -32,8 +31,14 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
-        LoginResponse response = authService.login(request);
-        return ResponseEntity.ok(response);
+    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
+
+    	ResponseEntity<?> response = authService.login(request);
+
+    	if(response.getStatusCode().value() == 200) {
+            return response;
+        	} else {
+        		return response;
+        	}
     }
 }

@@ -7,7 +7,7 @@ INSERT INTO roles (name) VALUES ('ROLE_MODERATOR');
 
 INSERT INTO roles (name) VALUES ('ROLE_ADMIN');
 
-INSERT INTO users (email, password, username) VALUES ('testuser@mail', 'testuser', 'password123');
+INSERT INTO users (username, email, password) VALUES ('testuser', 'testuser@mail', '$2a$10$Snw7PpTutOfWAS6.f7CqUOXR/PXE7zYoVUJrVLOowALkt9sP2MBy2');
 
 INSERT INTO user_roles (user_id, role_id) VALUES (1, 1);
 
