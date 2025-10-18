@@ -1,4 +1,4 @@
-package com.challenge.taskapi;
+package com.challenge.taskapi.testesunitarios;
 
 import com.challenge.taskapi.entity.Role;
 import com.challenge.taskapi.entity.User;
