@@ -102,12 +102,14 @@ Implemente os seguintes testes:
 - Testes para todos os endpoints de tarefas
 - Testes de segurança (acesso sem token, token inválido, token expirado)
 
+**Dica:** Use `@SpringBootTest`, `TestRestTemplate` ou `MockMvc` para testes de integração.
+
 #### Testes Unitários
 - Testes para `AuthService`
 - Testes para `TaskService`
 - Testes para `JwtTokenProvider`
 
-**Dica:** Use `@SpringBootTest`, `TestRestTemplate` ou `MockMvc` para testes de integração, e `Mockito` para testes unitários.
+**Dica:** Use `Mockito` para testes unitários.
 
 ### 3. Correção de Bugs (Obrigatório)
 

@@ -231,6 +231,18 @@ Configurar o Security e tudo que depende dessa configuração.
 **Resultado Atual:** Permitir criar tarefa com campos nulos  
 **Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
 
+### Bug #10
+**Título:** Sem teste unitários para JwtTokenProvider  
+**Severidade:** Alta  
+**Localização:** JwtTokenProvider   
+**Descrição:** Classe não tem testes   
+**Passos para Reproduzir:**
+1. Na pasta de testes do projeto não tem o teste para JwtTokenProvider  
+
+**Resultado Esperado:** Testes feitos para JwtTokenProvider  
+**Resultado Atual:** Sem teste para JwtTokenProvider  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
+
 ---
 
 ## 4. Cobertura de Testes
