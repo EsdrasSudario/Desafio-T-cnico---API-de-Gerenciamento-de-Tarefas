@@ -1,10 +1,16 @@
 package com.challenge.taskapi.dto;
 
 import com.challenge.taskapi.enums.Priority;
+
+import jakarta.validation.constraints.NotBlank;
 public class TaskRequest {
 
+	@NotBlank
 	private String title;
+	
+	@NotBlank
     private String description;
+	
     private Priority priority;
 
 	public TaskRequest(String title, String description, Priority priority) {
