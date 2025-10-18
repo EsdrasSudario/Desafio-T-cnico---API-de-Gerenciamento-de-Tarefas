@@ -1,4 +1,4 @@
-package com.challenge.taskapi;
+package com.challenge.taskapitestesintegracao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

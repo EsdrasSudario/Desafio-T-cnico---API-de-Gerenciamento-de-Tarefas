@@ -1,4 +1,4 @@
-package com.challenge.taskapi;
+package com.challenge.taskapi.testesunitarios;
 
 import com.challenge.taskapi.dto.LoginRequest;
 import com.challenge.taskapi.dto.LoginResponse;
