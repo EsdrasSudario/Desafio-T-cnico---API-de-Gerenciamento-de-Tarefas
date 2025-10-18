@@ -21,7 +21,7 @@ import com.challenge.taskapi.service.UserDetailsServiceImpl;
 
 public class AuthTokenFilter extends OncePerRequestFilter {
   @Autowired
-  private JwtUtils jwtUtils;
+  private JwtTokenProvider jwtUtils;
 
   @Autowired
   private UserDetailsServiceImpl userDetailsService;
