@@ -219,6 +219,18 @@ Configurar o Security e tudo que depende dessa configuração.
 **Resultado Atual:** Permite o registro de completed  
 **Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
 
+### Bug #9
+**Título:** Criando tarefa com campos nulos  
+**Severidade:** Alta  
+**Localização:** TaskRequest   
+**Descrição:** Ao registrar uma tarefa com campos nulos o sistema deixa   
+**Passos para Reproduzir:**
+1. No end-point para POST /api/tasks no Request body  
+
+**Resultado Esperado:** Não permitir criar tarefa com campos nulos  
+**Resultado Atual:** Permitir criar tarefa com campos nulos  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
+
 ---
 
 ## 4. Cobertura de Testes
