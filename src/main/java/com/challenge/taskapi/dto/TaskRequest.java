@@ -1,36 +1,23 @@
 package com.challenge.taskapi.dto;
 
 import com.challenge.taskapi.enums.Priority;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
 public class TaskRequest {
 
-	private Long id;
 	private String title;
     private String description;
     private Priority priority;
     private Boolean completed;
 
-	public TaskRequest(Long id, String title, String description, Priority priority, Boolean completed) {
+	public TaskRequest(String title, String description, Priority priority, Boolean completed) {
 		super();
-		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.priority = priority;
 		this.completed = completed;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+	public TaskRequest() {
+		super();
 	}
 
 	public String getTitle() {
