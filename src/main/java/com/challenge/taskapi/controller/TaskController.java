@@ -1,6 +1,7 @@
 package com.challenge.taskapi.controller;
 
 import com.challenge.taskapi.dto.TaskRequest;
+import com.challenge.taskapi.dto.TaskRequestUp;
 import com.challenge.taskapi.dto.TaskResponse;
 import com.challenge.taskapi.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class TaskController {
 
     @PutMapping("/{id}")
     public ResponseEntity<TaskResponse> updateTask(@PathVariable Long id,
-                                                     @RequestBody TaskRequest request,
+                                                     @RequestBody TaskRequestUp request,
                                                      Authentication authentication) {
         String username = authentication.getName();
         TaskResponse response = taskService.updateTask(id, request, username);

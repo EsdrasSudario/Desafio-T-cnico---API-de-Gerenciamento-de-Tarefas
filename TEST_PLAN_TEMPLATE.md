@@ -207,6 +207,18 @@ Configurar o Security e tudo que depende dessa configuração.
 **Resultado Atual:** Permite o registro de id  
 **Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
 
+### Bug #8
+**Título:** Criando tarefa campo completed  
+**Severidade:** Alta  
+**Localização:** TaskRequest no argumento completed  
+**Descrição:** Ao registrar uma tarefa, campo completed é mostrado   
+**Passos para Reproduzir:**
+1. No end-point para POST /api/tasks no Request body  
+
+**Resultado Esperado:** Não permitir informar o completed  
+**Resultado Atual:** Permite o registro de completed  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
+
 ---
 
 ## 4. Cobertura de Testes

@@ -1,20 +1,22 @@
 package com.challenge.taskapi.dto;
 
 import com.challenge.taskapi.enums.Priority;
-public class TaskRequest {
+public class TaskRequestUp {
 
 	private String title;
     private String description;
     private Priority priority;
+    private boolean completed;
 
-	public TaskRequest(String title, String description, Priority priority) {
+	public TaskRequestUp(String title, String description, Priority priority, boolean completed) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.priority = priority;
+		this.completed = completed;
 	}
 
-	public TaskRequest() {
+	public TaskRequestUp() {
 		super();
 	}
 
@@ -40,6 +42,14 @@ public class TaskRequest {
 
 	public void setPriority(Priority priority) {
 		this.priority = priority;
+	}
+
+	public boolean getCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
 	}
 
 }
