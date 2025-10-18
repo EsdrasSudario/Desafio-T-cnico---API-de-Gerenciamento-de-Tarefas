@@ -48,16 +48,15 @@ Liste as ferramentas que você usaria:
 - [ X ] Registrar usuário com dados válidos, status 200.
 
 **Cenários de Erro:**
-- [ X ] Registrar com nome já usado, status 400.
-- [ X ] Registrar com e-mail já usado, status 400.
+- [ X ] Registrar com dados inválidos, status 400.
 
 #### POST /api/auth/login
 
 **Cenários de Sucesso:**
-- [ ] Login com sucesso
+- [ X ] Login com sucesso  
 
 **Cenários de Erro:**
-- [ ] Login sem sucesso
+- [ X ] Login com erro  
 
 ### 2.3 Gerenciamento de Tarefas
 

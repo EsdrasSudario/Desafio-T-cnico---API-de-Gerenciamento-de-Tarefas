@@ -20,25 +20,13 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody SignupRequest request) {
-
     	ResponseEntity<?> response = authService.register(request);
-    	
-    	if(response.getStatusCode().value() == 200) {
-        return response;
-    	} else {
-    		return response;
-    			}
+    	return response;
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
-
     	ResponseEntity<?> response = authService.login(request);
-
-    	if(response.getStatusCode().value() == 200) {
-            return response;
-        	} else {
-        		return response;
-        	}
+    	return response;
     }
 }
