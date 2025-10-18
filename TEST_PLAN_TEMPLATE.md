@@ -195,6 +195,18 @@ Configurar o Security e tudo que depende dessa configuração.
 **Resultado Atual:** Status 500  
 **Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
 
+### Bug #7
+**Título:** Criando tarefa informando o id  
+**Severidade:** Alta  
+**Localização:** TaskRequest no argumento id  
+**Descrição:** Ao registrar uma tarefa, está permitindo informar o id   
+**Passos para Reproduzir:**
+1. No end-point para POST /api/tasks no Request body  
+
+**Resultado Esperado:** Não permitir informar o id  
+**Resultado Atual:** Permite o registro de id  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
+
 ---
 
 ## 4. Cobertura de Testes
