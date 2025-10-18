@@ -63,17 +63,17 @@ Liste as ferramentas que você usaria:
 #### POST /api/tasks
 
 **Cenários de Sucesso:**
-- [ ] Criar tarefa com todos os campos válidos
-- [ ] Criar tarefa sem descrição (opcional)
+- [ X ] Criar tarefa com todos os campos válidos
 
 **Cenários de Erro:**
-- [ ] ?
+- [ X ] Criar tarefa sem autorização
+- [ X ] Criar tarefa sem descrição (opcional)
 
 #### GET /api/tasks
 
 **Cenários de Sucesso:**
-- [ ] Listar tarefas do usuário autenticado
-- [ ] Verificar ordenação das tarefas por prioridade
+- [ X ] Listar tarefas do usuário autenticado
+- [ X ] Verificar ordenação das tarefas por prioridade
 
 **Cenários de Erro:**
 - [ ] ?
@@ -241,6 +241,18 @@ Configurar o Security e tudo que depende dessa configuração.
 
 **Resultado Esperado:** Testes feitos para JwtTokenProvider  
 **Resultado Atual:** Sem teste para JwtTokenProvider  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
+
+### Bug #10
+**Título:** GET das tarefas sem ordem por priority  
+**Severidade:** Alta  
+**Localização:** GET /api/tasks 
+**Descrição:** Método não tras as tarefas ordenadas por priority   
+**Passos para Reproduzir:**
+1. http://localhost:8080/api/tasks método GET  
+
+**Resultado Esperado:** Tarefas ordenadas por priority  
+**Resultado Atual:** Tarefas não ordenadas por priority  
 **Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
 
 ---
