@@ -6,7 +6,7 @@ import com.challenge.taskapi.dto.SignupRequest;
 import com.challenge.taskapi.entity.Role;
 import com.challenge.taskapi.entity.User;
 import com.challenge.taskapi.repository.UserRepository;
-import com.challenge.taskapi.security.JwtUtils;
+import com.challenge.taskapi.security.JwtTokenProvider;
 
 import com.challenge.taskapi.repository.*;
 
@@ -37,7 +37,7 @@ public class AuthService {
 	AuthenticationManager authenticationManager;
 
 	@Autowired
-	JwtUtils jwtUtils;
+	JwtTokenProvider jwtUtils;
 
 	@Autowired
 	PasswordEncoder encoder;

@@ -10,7 +10,12 @@ public class LoginRequest {
     	this.password = password;
     }
     
-    public String getUsername() {
+	public LoginRequest() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
