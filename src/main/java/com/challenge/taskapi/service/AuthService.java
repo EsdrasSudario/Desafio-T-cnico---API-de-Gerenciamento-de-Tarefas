@@ -6,7 +6,7 @@ import com.challenge.taskapi.dto.SignupRequest;
 import com.challenge.taskapi.entity.Role;
 import com.challenge.taskapi.entity.User;
 import com.challenge.taskapi.repository.UserRepository;
-import com.challenge.taskapi.security.JwtUtils;
+import com.challenge.taskapi.security.JwtTokenProvider;
 
 import com.challenge.taskapi.repository.*;
 
@@ -37,7 +37,7 @@ public class AuthService {
 	AuthenticationManager authenticationManager;
 
 	@Autowired
-	JwtUtils jwtUtils;
+	JwtTokenProvider jwtUtils;
 
 	@Autowired
 	PasswordEncoder encoder;
@@ -45,23 +45,21 @@ public class AuthService {
 	@Autowired
 	RoleRepository roleRepository;
 
-    public LoginResponse login(LoginRequest request) {
+    public ResponseEntity<?> login(LoginRequest request) {
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
-
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		String jwt = jwtUtils.generateJwtToken(authentication);
 
 		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 		List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
 				.collect(Collectors.toList());
-
-		return new LoginResponse(userDetails.getId(), jwt, userDetails.getUsername(), roles);
+		return ResponseEntity.ok(new LoginResponse(userDetails.getId(), jwt, userDetails.getUsername(), roles));
     }
 
     public ResponseEntity<?> register(SignupRequest request) {
 		if (userRepository.existsByUsername(request.getUsername())) {
-			return ResponseEntity.badRequest().body(new MessageResponse("Error: O nome do usuário já existe !"));
+			return ResponseEntity.badRequest().body(new MessageResponse("Erro: O nome do usuário já existe !"));
 		}
 
 		if (userRepository.existsByEmail(request.getEmail())) {

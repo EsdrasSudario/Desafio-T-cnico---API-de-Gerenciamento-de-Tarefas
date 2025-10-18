@@ -1,7 +1,7 @@
 # Plano de Testes - API de Gerenciamento de Tarefas
 
 **Candidato:** Esdras Sudário  
-**Data:** 15/10/2025
+**Data:** 18/10/2025
 
 ---
 
@@ -48,16 +48,15 @@ Liste as ferramentas que você usaria:
 - [ X ] Registrar usuário com dados válidos, status 200.
 
 **Cenários de Erro:**
-- [ X ] Registrar com nome já usado, status 400.
-- [ X ] Registrar com e-mail já usado, status 400.
+- [ X ] Registrar com dados inválidos, status 400.
 
 #### POST /api/auth/login
 
 **Cenários de Sucesso:**
-- [ ] Login com credenciais válidas
+- [ X ] Login com sucesso  
 
 **Cenários de Erro:**
-- [ ] ?
+- [ X ] Login com erro  
 
 ### 2.3 Gerenciamento de Tarefas
 
@@ -121,8 +120,8 @@ Liste as ferramentas que você usaria:
 ### Bug #1
 **Título:** Erro de segurança  
 **Severidade:** Alta  
-**Localização:** Classe : SecurityConfig
-**Descrição:** O Security não está para o uso de token.
+**Localização:** Classe : SecurityConfig  
+**Descrição:** O Security não está para o uso de token.  
 **Passos para Reproduzir:**
 1. Execultar o sistema. 
 2. Na tela do consele aparece uma senha gerada pelo Security.
@@ -174,14 +173,62 @@ Configurar o Security e tudo que depende dessa configuração.
 
 ### Bug #5
 **Título:** Status do registro errado  
-**Severidade:** Alta
-**Localização:** AuthController  
+**Severidade:** Alta  
+**Localização:** AuthController register  
 **Descrição:** Ao tentar registrar usuário o sistema com nome já existente  
 **Passos para Reproduzir:**
 1. No end-point para registro de usuário tentar enviar um nome que já tem registro
 
 **Resultado Esperado:** Status 400  
 **Resultado Atual:** Status 200  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
+
+### Bug #6
+**Título:** Login não funciona  
+**Severidade:** Alta  
+**Localização:** AuthController login  
+**Descrição:** Ao tentar logar, sistema mostra erro  
+**Passos para Reproduzir:**
+1. No end-point para login, informar nome e senha de usuário já cadastrado  
+
+**Resultado Esperado:** Status 200  
+**Resultado Atual:** Status 500  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
+
+### Bug #7
+**Título:** Criando tarefa informando o id  
+**Severidade:** Alta  
+**Localização:** TaskRequest no argumento id  
+**Descrição:** Ao registrar uma tarefa, está permitindo informar o id   
+**Passos para Reproduzir:**
+1. No end-point para POST /api/tasks no Request body  
+
+**Resultado Esperado:** Não permitir informar o id  
+**Resultado Atual:** Permite o registro de id  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
+
+### Bug #8
+**Título:** Criando tarefa campo completed  
+**Severidade:** Alta  
+**Localização:** TaskRequest no argumento completed  
+**Descrição:** Ao registrar uma tarefa, campo completed é mostrado   
+**Passos para Reproduzir:**
+1. No end-point para POST /api/tasks no Request body  
+
+**Resultado Esperado:** Não permitir informar o completed  
+**Resultado Atual:** Permite o registro de completed  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
+
+### Bug #9
+**Título:** Criando tarefa com campos nulos  
+**Severidade:** Alta  
+**Localização:** TaskRequest   
+**Descrição:** Ao registrar uma tarefa com campos nulos o sistema deixa   
+**Passos para Reproduzir:**
+1. No end-point para POST /api/tasks no Request body  
+
+**Resultado Esperado:** Não permitir criar tarefa com campos nulos  
+**Resultado Atual:** Permitir criar tarefa com campos nulos  
 **Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
 
 ---

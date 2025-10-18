@@ -1,5 +1,6 @@
 package com.challenge.taskapi.service;
 
+import com.challenge.taskapi.dto.TaskRequestUp;
 import com.challenge.taskapi.dto.TaskRequest;
 import com.challenge.taskapi.dto.TaskResponse;
 import com.challenge.taskapi.entity.Task;
@@ -59,25 +60,23 @@ public class TaskService {
         return mapToResponse(task);
     }
 
-    public TaskResponse updateTask(Long id, TaskRequest request, String username) {
+    public TaskResponse updateTask(Long id, TaskRequestUp requestUp, String username) {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
         Task task = taskRepository.findByIdAndUserId(id, user.getId())
                 .orElseThrow(() -> new TaskNotFoundException("Tarefa não encontrada com id: " + id));
 
-        if (request.getTitle() != null) {
-            task.setTitle(request.getTitle());
+        if (requestUp.getTitle() != null) {
+            task.setTitle(requestUp.getTitle());
         }
-        if (request.getDescription() != null) {
-            task.setDescription(request.getDescription());
+        if (requestUp.getDescription() != null) {
+            task.setDescription(requestUp.getDescription());
         }
-        if (request.getPriority() != null) {
-            task.setPriority(request.getPriority());
+        if (requestUp.getPriority() != null) {
+            task.setPriority(requestUp.getPriority());
         }
-        if (request.getCompleted() != null) {
-            task.setCompleted(request.getCompleted());
-        }
+            task.setCompleted(requestUp.getCompleted());
 
         Task updatedTask = taskRepository.save(task);
         return mapToResponse(updatedTask);

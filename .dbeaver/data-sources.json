@@ -23,6 +23,19 @@
 				},
 				"auth-model": "native"
 			}
+		},
+		"h2_embedded-199ef93691a-298a3d58ee3106c9": {
+			"provider": "h2",
+			"driver": "h2_embedded",
+			"name": "H2 Embedded",
+			"save-password": true,
+			"configuration": {
+				"url": "jdbc:h2:mem:taskdb",
+				"configurationType": "URL",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"auth-model": "native"
+			}
 		}
 	},
 	"connection-types": {

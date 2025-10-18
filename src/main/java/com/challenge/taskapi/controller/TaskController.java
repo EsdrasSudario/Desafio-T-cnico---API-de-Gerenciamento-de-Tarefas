@@ -1,8 +1,12 @@
 package com.challenge.taskapi.controller;
 
 import com.challenge.taskapi.dto.TaskRequest;
+import com.challenge.taskapi.dto.TaskRequestUp;
 import com.challenge.taskapi.dto.TaskResponse;
 import com.challenge.taskapi.service.TaskService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +23,7 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping
-    public ResponseEntity<TaskResponse> createTask(@RequestBody TaskRequest request,
+    public ResponseEntity<TaskResponse> createTask(@Valid @RequestBody TaskRequest request,
                                                      Authentication authentication) {
         String username = authentication.getName();
         TaskResponse response = taskService.createTask(request, username);
@@ -43,7 +47,7 @@ public class TaskController {
 
     @PutMapping("/{id}")
     public ResponseEntity<TaskResponse> updateTask(@PathVariable Long id,
-                                                     @RequestBody TaskRequest request,
+                                                     @RequestBody TaskRequestUp request,
                                                      Authentication authentication) {
         String username = authentication.getName();
         TaskResponse response = taskService.updateTask(id, request, username);

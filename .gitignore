@@ -12,6 +12,7 @@ target/
 .settings
 .springBeans
 .sts4-cache
+.dbeaver
 
 ### IntelliJ IDEA ###
 .idea
@@ -34,4 +35,3 @@ build/
 
 ### Mac ###
 .DS_Store
-
