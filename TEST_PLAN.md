@@ -70,11 +70,12 @@ Liste as ferramentas que você usaria:
 **Cenários de Erro:**
 - [ X ] Criar tarefa sem autorização
 - [ X ] Criar tarefa sem descrição (opcional)
+- [ X ] Criar tarefa com campos inválidos
 
 #### GET /api/tasks
 
 **Cenários de Sucesso:**
-- [ X ] Listar tarefas do usuário autenticado
+- [ X ] Listar todas as tarefas do usuário autenticado
 - [ X ] Verificar ordenação das tarefas por prioridade
 
 **Cenários de Erro:**
@@ -83,18 +84,18 @@ Liste as ferramentas que você usaria:
 #### GET /api/tasks/{id}
 
 **Cenários de Sucesso:**
-- [ ] Buscar tarefa existente do usuário
+- [ X ] Buscar tarefa existente do usuário
 
 **Cenários de Erro:**
-- [ ] ?
+- [ X ] Buscar por ID (não encontrada)  
 
 #### PUT /api/tasks/{id}
 
 **Cenários de Sucesso:**
-- [ ] Atualizar título da tarefa
-- [ ] Atualizar descrição da tarefa
-- [ ] Atualizar prioridade da tarefa
-- [ ] Marcar tarefa como concluída
+- [ X ] Atualizar título da tarefa
+- [ X ] Atualizar descrição da tarefa
+- [ X ] Atualizar prioridade da tarefa
+- [ X ] Marcar tarefa como concluída
 
 **Cenários de Erro:**
 - [ ] ?
@@ -102,18 +103,12 @@ Liste as ferramentas que você usaria:
 #### DELETE /api/tasks/{id}
 
 **Cenários de Sucesso:**
-- [ ] Deletar tarefa existente do usuário
+- [ X ] Deletar tarefa existente do usuário
 
 **Cenários de Erro:**
 - [ ] ?
 
 ### 2.4 Segurança JWT
-
-**Cenários de Sucesso:**
-- [ ] Deletar tarefa existente do usuário
-
-**Cenários de Erro:**
-- [ ] ?
 
 **Cenários de Teste:**
 - [ X ] Verifique acessos dos endpoints com/sem token válido.
