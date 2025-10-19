@@ -45,18 +45,19 @@ Liste as ferramentas que você usaria:
 #### POST /api/auth/register
 
 **Cenários de Sucesso:**
-- [ X ] Registrar usuário com dados válidos, status 200.
+- [ X ] Deve registrar usuário com sucesso.
 
 **Cenários de Erro:**
-- [ X ] Registrar com dados inválidos, status 400.
+- [ X ] Deve retornar erro ao registrar usuário com username duplicado.
+- [ X ] Deve retornar erro ao registrar usuário com email duplicado.
 
 #### POST /api/auth/login
 
 **Cenários de Sucesso:**
-- [ X ] Login com sucesso  
+- [ X ] Deve fazer login com sucesso após registro  
 
 **Cenários de Erro:**
-- [ X ] Login com erro  
+- [ X ] Deve falhar login com credenciais inválidas  
 
 ### 2.3 Gerenciamento de Tarefas
 
@@ -107,10 +108,16 @@ Liste as ferramentas que você usaria:
 
 ### 2.4 Segurança JWT
 
+**Cenários de Sucesso:**
+- [ ] Deletar tarefa existente do usuário
+
+**Cenários de Erro:**
+- [ ] ?
+
 **Cenários de Teste:**
-- [ ] Verifique acessos dos endpoints com/sem token válido
-- [ ] Verificar comportamento do token
-- [ ] Verificar se usuário só acessa suas próprias tarefas
+- [ X ] Verifique acessos dos endpoints com/sem token válido.
+- [ X ] Verificar comportamento do token com relação ao tempo de expiração.
+- [ X ] Verificar se usuário só acessa suas próprias tarefas
 - [ ] Outros
 
 ---
@@ -253,6 +260,20 @@ Configurar o Security e tudo que depende dessa configuração.
 
 **Resultado Esperado:** Tarefas ordenadas por priority  
 **Resultado Atual:** Tarefas não ordenadas por priority  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
+
+
+### Bug #11
+**Título:** H2-Console não aparece no navegador.  
+**Severidade:** Alta  
+**Localização:** http://localhost:8080/h2-console/login.do?jsessionid=8dbf6aedcd6784c531193f3703c72b31 
+**Descrição:** Após acessar o site e fazer o login no h2-console, a tela seguinte não aparece.   
+**Passos para Reproduzir:**
+1. Acessar http://localhost:8080/h2-console/  
+2. Fazer o login  
+
+**Resultado Esperado:** Mostrar a tela de trabalho para o h2-console.  
+**Resultado Atual:** Não mostrar a tela de trabalho para o h2-console.  
 **Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
 
 ---
