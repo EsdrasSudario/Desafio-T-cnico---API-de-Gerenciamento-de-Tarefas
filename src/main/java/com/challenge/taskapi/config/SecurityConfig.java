@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -55,38 +56,24 @@ public class SecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 
-// Versão antiga do Spring Boot (2.7.+)
-/*    @Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-            .csrf(csrf -> csrf.disable())
-            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**", "/h2-console/**").permitAll()
-                .requestMatchers("/swagger-ui/**","/swagger-resources/**", "/v2/api-docs/**", "/v3/api-docs/**","/swagger-ui.html").permitAll()
-                .anyRequest().authenticated()
-            )
-            .headers(headers -> headers.frameOptions(frame -> frame.disable()))
-            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
-        return http.build();
-    }
-*/
-
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
-			.csrf(csrf -> csrf.disable())
+			.csrf(csrf -> csrf
+					.disable())
 			.exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
 			.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 			.authorizeHttpRequests(auth -> auth
 					.requestMatchers("/api/auth/**").permitAll()
-					.requestMatchers("/h2-console/**").permitAll()
+					.requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
 					.requestMatchers("/swagger-ui/**","/swagger-resources/**","/v2/api-docs/**","/v3/api-docs/**","/swagger-ui.html")
 					.permitAll()
+					.requestMatchers("/api/auth/login/**").permitAll()
 					.anyRequest().authenticated()
-					);
+					)
+			.headers(headers -> headers
+	                .frameOptions(frame -> frame.sameOrigin())
+	            );
 
 		http.authenticationProvider(authenticationProvider());
 
@@ -95,20 +82,5 @@ public class SecurityConfig {
 		return http.build();
 	}
 
-//Não seguro
-/*	@Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        
-        configuration.setAllowedOrigins(Arrays.asList("*"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
-        configuration.setAllowCredentials(true);
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
-*/
 }
 

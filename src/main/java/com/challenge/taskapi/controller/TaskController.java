@@ -13,7 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/tasks")
@@ -34,7 +36,10 @@ public class TaskController {
     public ResponseEntity<List<TaskResponse>> getAllTasks(Authentication authentication) {
         String username = authentication.getName();
         List<TaskResponse> tasks = taskService.getAllTasks(username);
-        return ResponseEntity.ok(tasks);
+        List<TaskResponse> tasksOrder = tasks.stream()
+        										.sorted(Comparator.comparing(TaskResponse::getPriority))
+        										.collect(Collectors.toList());
+        return ResponseEntity.ok(tasksOrder);
     }
 
     @GetMapping("/{id}")

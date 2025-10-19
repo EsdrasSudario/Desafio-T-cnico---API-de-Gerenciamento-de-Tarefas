@@ -1,7 +1,7 @@
 # Plano de Testes - API de Gerenciamento de Tarefas
 
 **Candidato:** Esdras Sudário  
-**Data:** 18/10/2025
+**Data:** 19/10/2025
 
 ---
 
@@ -45,35 +45,36 @@ Liste as ferramentas que você usaria:
 #### POST /api/auth/register
 
 **Cenários de Sucesso:**
-- [ X ] Registrar usuário com dados válidos, status 200.
+- [ X ] Deve registrar usuário com sucesso.
 
 **Cenários de Erro:**
-- [ X ] Registrar com dados inválidos, status 400.
+- [ X ] Deve retornar erro ao registrar usuário com username duplicado.
+- [ X ] Deve retornar erro ao registrar usuário com email duplicado.
 
 #### POST /api/auth/login
 
 **Cenários de Sucesso:**
-- [ X ] Login com sucesso  
+- [ X ] Deve fazer login com sucesso após registro  
 
 **Cenários de Erro:**
-- [ X ] Login com erro  
+- [ X ] Deve falhar login com credenciais inválidas  
 
 ### 2.3 Gerenciamento de Tarefas
 
 #### POST /api/tasks
 
 **Cenários de Sucesso:**
-- [ ] Criar tarefa com todos os campos válidos
-- [ ] Criar tarefa sem descrição (opcional)
+- [ X ] Criar tarefa com todos os campos válidos
 
 **Cenários de Erro:**
-- [ ] ?
+- [ X ] Criar tarefa sem autorização
+- [ X ] Criar tarefa sem descrição (opcional)
 
 #### GET /api/tasks
 
 **Cenários de Sucesso:**
-- [ ] Listar tarefas do usuário autenticado
-- [ ] Verificar ordenação das tarefas por prioridade
+- [ X ] Listar tarefas do usuário autenticado
+- [ X ] Verificar ordenação das tarefas por prioridade
 
 **Cenários de Erro:**
 - [ ] ?
@@ -107,10 +108,16 @@ Liste as ferramentas que você usaria:
 
 ### 2.4 Segurança JWT
 
+**Cenários de Sucesso:**
+- [ ] Deletar tarefa existente do usuário
+
+**Cenários de Erro:**
+- [ ] ?
+
 **Cenários de Teste:**
-- [ ] Verifique acessos dos endpoints com/sem token válido
-- [ ] Verificar comportamento do token
-- [ ] Verificar se usuário só acessa suas próprias tarefas
+- [ X ] Verifique acessos dos endpoints com/sem token válido.
+- [ X ] Verificar comportamento do token com relação ao tempo de expiração.
+- [ X ] Verificar se usuário só acessa suas próprias tarefas
 - [ ] Outros
 
 ---
@@ -229,6 +236,44 @@ Configurar o Security e tudo que depende dessa configuração.
 
 **Resultado Esperado:** Não permitir criar tarefa com campos nulos  
 **Resultado Atual:** Permitir criar tarefa com campos nulos  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
+
+### Bug #10
+**Título:** Sem teste unitários para JwtTokenProvider  
+**Severidade:** Alta  
+**Localização:** JwtTokenProvider   
+**Descrição:** Classe não tem testes   
+**Passos para Reproduzir:**
+1. Na pasta de testes do projeto não tem o teste para JwtTokenProvider  
+
+**Resultado Esperado:** Testes feitos para JwtTokenProvider  
+**Resultado Atual:** Sem teste para JwtTokenProvider  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
+
+### Bug #11
+**Título:** GET das tarefas sem ordem por priority  
+**Severidade:** Alta  
+**Localização:** GET /api/tasks 
+**Descrição:** Método não tras as tarefas ordenadas por priority   
+**Passos para Reproduzir:**
+1. http://localhost:8080/api/tasks método GET  
+
+**Resultado Esperado:** Tarefas ordenadas por priority  
+**Resultado Atual:** Tarefas não ordenadas por priority  
+**Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
+
+
+### Bug #11
+**Título:** H2-Console não aparece no navegador.  
+**Severidade:** Alta  
+**Localização:** http://localhost:8080/h2-console/login.do?jsessionid=8dbf6aedcd6784c531193f3703c72b31 
+**Descrição:** Após acessar o site e fazer o login no h2-console, a tela seguinte não aparece.   
+**Passos para Reproduzir:**
+1. Acessar http://localhost:8080/h2-console/  
+2. Fazer o login  
+
+**Resultado Esperado:** Mostrar a tela de trabalho para o h2-console.  
+**Resultado Atual:** Não mostrar a tela de trabalho para o h2-console.  
 **Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
 
 ---
