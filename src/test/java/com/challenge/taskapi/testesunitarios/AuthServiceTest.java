@@ -18,9 +18,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.*;
@@ -54,6 +54,29 @@ class AuthServiceTest {
     @BeforeEach
     void setup() {
         MockitoAnnotations.openMocks(this);
+    }
+
+    // ❌ Falha de autenticação
+    @Test
+    void testLoginFailure() {
+        LoginRequest request = new LoginRequest();
+        request.setUsername("user");
+        request.setPassword("senha");
+
+        when(authenticationManager.authenticate(any()))
+                .thenThrow(new BadCredentialsException("Nome ou senha inválido"));
+
+        ResponseEntity<?> response = authService.login(request);
+        assertNotNull(response);
+        assertEquals(400, response.getStatusCode().value()); // HTTP 400 Bad Request
+        assertTrue(response.getBody() instanceof MessageResponse);
+
+        MessageResponse message = (MessageResponse) response.getBody();
+        assertEquals("Erro: Nome ou senha inválido !", message.getMessage());
+
+        // Verifica se o método authenticate foi realmente chamado
+        verify(authenticationManager, times(1)).authenticate(any());
+        verifyNoInteractions(jwtTokenProvider);
     }
 
     // ✅ Sucesso no cadastro
@@ -146,18 +169,5 @@ class AuthServiceTest {
         assertEquals("user", loginResponse.getUsername());
         assertEquals("fake-jwt-token", loginResponse.getToken());
         assertEquals(List.of("ROLE_USER"), loginResponse.getRoles());
-    }
-
-    // ❌ Falha de autenticação
-    @Test
-    void testLoginFailure() {
-        LoginRequest request = new LoginRequest();
-        request.setUsername("user");
-        request.setPassword("senha");
-
-        when(authenticationManager.authenticate(any()))
-                .thenThrow(new RuntimeException("Credenciais inválidas"));
-
-        assertThrows(RuntimeException.class, () -> authService.login(request));
     }
 }
