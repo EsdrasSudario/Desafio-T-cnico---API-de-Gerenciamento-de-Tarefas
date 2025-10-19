@@ -20,6 +20,23 @@ public class TaskResponse {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+	public TaskResponse() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public TaskResponse(Long id, String title, String description, Priority priority, Boolean completed,
+			LocalDateTime createdAt, LocalDateTime updatedAt) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.priority = priority;
+		this.completed = completed;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
+
     public Long getId() {
 		return id;
 	}
