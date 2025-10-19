@@ -12,7 +12,7 @@ Descreva quais tipos de teste você aplicaria neste projeto:
 - [ X ] Testes Unitários
 - [ X ] Testes de Integração
 - [ X ] Testes de Segurança
-- [   ] Testes de Performance
+- [ X ] Testes de Performance
 - [ X ] Outros: Manuais / Exploratórios
 
 ### 1.2 Ferramentas Utilizadas
@@ -21,6 +21,7 @@ Liste as ferramentas que você usaria:
 - Testes Manuais/Exploratórios: Interface de usuário, do SWAGGER, no navegador.
 - Gestão de Testes: Git
 - CI/CD: GitHub Actions
+- Testes de Performance: Grafana K6
 
 ### 1.3 Priorização
 - No início, verifico se o sistema tem o módulo de documentação SWAGGER, caso não tenha, implementar.
