@@ -1,7 +1,7 @@
 # Plano de Testes - API de Gerenciamento de Tarefas
 
 **Candidato:** Esdras Sudário  
-**Data:** 18/10/2025
+**Data:** 19/10/2025
 
 ---
 
@@ -243,7 +243,7 @@ Configurar o Security e tudo que depende dessa configuração.
 **Resultado Atual:** Sem teste para JwtTokenProvider  
 **Sugestão de Correção:** Alterar,incluir código(s) e/ou criar novos arquivos com código necessário. 
 
-### Bug #10
+### Bug #11
 **Título:** GET das tarefas sem ordem por priority  
 **Severidade:** Alta  
 **Localização:** GET /api/tasks 

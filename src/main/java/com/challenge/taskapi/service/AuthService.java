@@ -19,10 +19,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -45,17 +49,23 @@ public class AuthService {
 	@Autowired
 	RoleRepository roleRepository;
 
-    public ResponseEntity<?> login(LoginRequest request) {
-		Authentication authentication = authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-		String jwt = jwtUtils.generateJwtToken(authentication);
+	public ResponseEntity<?> login(LoginRequest request) {
+			try {
+				Authentication authentication = authenticationManager.authenticate(
+						new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+				SecurityContextHolder.getContext().setAuthentication(authentication);
+				String jwt = jwtUtils.generateJwtToken(authentication);
 
-		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-		List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
-				.collect(Collectors.toList());
-		return ResponseEntity.ok(new LoginResponse(userDetails.getId(), jwt, userDetails.getUsername(), roles));
-    }
+				UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+				List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
+						.collect(Collectors.toList());
+				return ResponseEntity.ok(new LoginResponse(userDetails.getId(), jwt, userDetails.getUsername(), roles));
+			} catch (AuthenticationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return ResponseEntity.badRequest().body(new MessageResponse("Erro: Nome ou senha inválido !"));
+			}
+	}
 
     public ResponseEntity<?> register(SignupRequest request) {
 		if (userRepository.existsByUsername(request.getUsername())) {
