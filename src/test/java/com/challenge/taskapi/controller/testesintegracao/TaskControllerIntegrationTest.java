@@ -75,7 +75,7 @@ class TaskControllerIntegrationTest {
         mockMvc.perform(post("/api/tasks")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().is(500));
+                .andExpect(status().is(400));
     }
 
     // ✅ Buscar todas as tarefas
@@ -109,7 +109,7 @@ class TaskControllerIntegrationTest {
                 .thenThrow(new RuntimeException("Tarefa não encontrada"));
 
         mockMvc.perform(get("/api/tasks/99"))
-                .andExpect(status().isInternalServerError());
+                .andExpect(status().isBadRequest());
     }
 
     // ✅ Atualizar tarefa

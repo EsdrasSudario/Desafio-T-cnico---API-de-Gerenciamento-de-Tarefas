@@ -34,11 +34,11 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<Map<String, Object>> handleGenericException(Exception ex) {
 		Map<String, Object> body = new HashMap<>();
 		body.put("timestamp", LocalDateTime.now());
-		body.put("message", "Erro interno do servidor");
+		body.put("message", "Erro: dado(s) inválidos!");
 		body.put("details", ex.getMessage());
-		body.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
+		body.put("status", HttpStatus.BAD_REQUEST.value());
 
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
 	}
 
 }
